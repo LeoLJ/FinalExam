@@ -35,3 +35,22 @@ extension UIImage {
     }
 }
 
+extension ViewController {
+    
+    func twoSum(arr: [Int], k: Int) -> ((Int, Int))? {
+        var i = 0
+        var j = arr.count - 1
+        
+        while i < j {
+            let sum = arr[i] + arr[j]
+            if sum == k {
+                return (i, j)
+            } else if sum < k {
+                i += 1
+            } else if sum > k {
+                j -= 1
+            }
+        }
+        return nil
+    }
+}

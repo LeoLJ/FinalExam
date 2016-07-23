@@ -38,10 +38,10 @@ class AddingBookVC: UIViewController {
     @IBAction func addToFireBase(sender: AnyObject) {
         //Firebase url:"https://acfinalexam-a371f.firebaseio.com/"
        
-        let image = self.smallImage?.image
+        let image = self.smallImage!.image
+        if image != nil {
         let imageData = UIImageJPEGRepresentation(image!, 1.0)
         let imageString = imageData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
-        
         
         let ref = FIRDatabase.database().reference()
         let childRef = ref.child("myBooks").childByAutoId()
@@ -53,13 +53,20 @@ class AddingBookVC: UIViewController {
                      "bookImage": imageString!]
         
         childRef.setValue(value)
+        } else {
+            let ref = FIRDatabase.database().reference()
+            let childRef = ref.child("myBooks").childByAutoId()
+            let value = ["bookName":bookNameField.text!,
+                         "bookSummury": bookSummaryField.text!,
+                         "storeAddress":storeAddreField.text!,
+                         "storeTel": storeTelField.text!,
+                         "storeWebsite": storeWebField.text!]
+            
+            childRef.setValue(value)
+        }
         
-        self.bookNameField.text = nil
-        self.bookSummaryField.text = nil
-        self.storeAddreField.text = nil
-        self.storeTelField.text = nil
-        self.storeWebField.text = nil
-//        self.smallImage!.image = UIImage(named: "chat_sympton")
+        self.navigationController?.popViewControllerAnimated(true)
+    
     }
     
 
