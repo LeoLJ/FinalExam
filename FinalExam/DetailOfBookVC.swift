@@ -9,9 +9,9 @@
 import UIKit
 import SafariServices
 import MapKit
+import SystemConfiguration
 
 class DetailOfBookVC: UIViewController, MKMapViewDelegate, UIScrollViewDelegate {
-
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var storeAddreLabel: UIButton!
     @IBOutlet weak var storeTelLabel: UIButton!
