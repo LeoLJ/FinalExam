@@ -21,7 +21,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWs-ss-bVv">
                                 <rect key="frame" x="20" y="72" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2I-fG-ikN">
@@ -41,7 +41,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DlM-7O-NXC">
                                 <rect key="frame" x="20" y="103" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aab-6K-qVE">
@@ -54,26 +54,43 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nxG-Vg-CJg">
                                 <rect key="frame" x="20" y="232" width="560" height="348"/>
                             </mapView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EYB-Qr-1E3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EYB-Qr-1E3">
                                 <rect key="frame" x="20" y="132" width="120" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="IAa-gx-1NZ"/>
                                     <constraint firstAttribute="width" constant="120" id="tFt-5T-bjq"/>
                                 </constraints>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rh-Ag-yH9">
+                                <rect key="frame" x="20" y="232" width="560" height="348"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vz-7f-P4N">
+                                <rect key="frame" x="20" y="132" width="120" height="90"/>
+                                <connections>
+                                    <action selector="checkDetailImage:" destination="iu6-Wm-xL1" eventType="touchUpInside" id="cyW-Wi-sRV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2rh-Ag-yH9" firstAttribute="trailing" secondItem="QUO-1r-CLG" secondAttribute="trailingMargin" id="8pS-Mb-7SY"/>
                             <constraint firstItem="nxG-Vg-CJg" firstAttribute="top" secondItem="Bcw-sM-cUq" secondAttribute="bottom" constant="8" id="Ee3-Hd-0EV"/>
                             <constraint firstItem="3nl-AA-yhr" firstAttribute="top" secondItem="nxG-Vg-CJg" secondAttribute="bottom" constant="20" id="H8s-jI-W9j"/>
                             <constraint firstItem="3nl-AA-yhr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EYB-Qr-1E3" secondAttribute="bottom" constant="20" id="Ih3-vw-RpR"/>
+                            <constraint firstItem="3nl-AA-yhr" firstAttribute="top" secondItem="2rh-Ag-yH9" secondAttribute="bottom" constant="20" id="K4B-x8-jcy"/>
+                            <constraint firstItem="2rh-Ag-yH9" firstAttribute="leading" secondItem="QUO-1r-CLG" secondAttribute="leadingMargin" id="TRD-dq-5HE"/>
+                            <constraint firstItem="8vz-7f-P4N" firstAttribute="centerY" secondItem="EYB-Qr-1E3" secondAttribute="centerY" id="U9k-Og-ZFK"/>
                             <constraint firstItem="DlM-7O-NXC" firstAttribute="top" secondItem="LWs-ss-bVv" secondAttribute="bottom" constant="10" id="UQx-0d-qMl"/>
                             <constraint firstItem="nxG-Vg-CJg" firstAttribute="trailing" secondItem="QUO-1r-CLG" secondAttribute="trailingMargin" id="USM-YZ-Ueo"/>
                             <constraint firstItem="EYB-Qr-1E3" firstAttribute="top" secondItem="DlM-7O-NXC" secondAttribute="bottom" constant="8" id="Wuy-Og-jjN"/>
+                            <constraint firstItem="2rh-Ag-yH9" firstAttribute="top" secondItem="Bcw-sM-cUq" secondAttribute="bottom" constant="8" id="Z9K-7t-U3s"/>
                             <constraint firstItem="Bcw-sM-cUq" firstAttribute="top" secondItem="u2I-fG-ikN" secondAttribute="bottom" constant="10" id="aSW-i8-ft4"/>
                             <constraint firstItem="Bcw-sM-cUq" firstAttribute="trailing" secondItem="aab-6K-qVE" secondAttribute="trailing" id="bP0-K9-8LJ"/>
+                            <constraint firstItem="8vz-7f-P4N" firstAttribute="width" secondItem="EYB-Qr-1E3" secondAttribute="width" id="bVT-Rk-Qtc"/>
                             <constraint firstItem="nxG-Vg-CJg" firstAttribute="leading" secondItem="QUO-1r-CLG" secondAttribute="leadingMargin" id="cA1-EJ-JAT"/>
                             <constraint firstItem="u2I-fG-ikN" firstAttribute="top" secondItem="aab-6K-qVE" secondAttribute="bottom" constant="10" id="de0-rs-Jw1"/>
+                            <constraint firstItem="8vz-7f-P4N" firstAttribute="height" secondItem="EYB-Qr-1E3" secondAttribute="height" id="hFI-bD-mzh"/>
+                            <constraint firstItem="8vz-7f-P4N" firstAttribute="centerX" secondItem="EYB-Qr-1E3" secondAttribute="centerX" id="k4e-eb-Zf8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aab-6K-qVE" secondAttribute="trailing" id="nmE-8I-6xT"/>
                             <constraint firstItem="u2I-fG-ikN" firstAttribute="trailing" secondItem="aab-6K-qVE" secondAttribute="trailing" id="pzx-Ut-lIp"/>
                             <constraint firstItem="LWs-ss-bVv" firstAttribute="top" secondItem="1Cf-BS-xRV" secondAttribute="bottom" constant="8" id="qHG-Rz-vtq"/>
@@ -88,6 +105,7 @@
                         <outlet property="bookImage" destination="EYB-Qr-1E3" id="UWG-Rs-kSF"/>
                         <outlet property="bookNameLabel" destination="LWs-ss-bVv" id="aem-zV-Epn"/>
                         <outlet property="bookSummaryLabel" destination="DlM-7O-NXC" id="uEZ-e9-MUr"/>
+                        <outlet property="imageScrollView" destination="2rh-Ag-yH9" id="Rg7-MD-gAw"/>
                         <outlet property="mapView" destination="nxG-Vg-CJg" id="MiI-pm-S9z"/>
                         <outlet property="storeAddreLabel" destination="aab-6K-qVE" id="prf-Rn-dzn"/>
                         <outlet property="storeTelLabel" destination="u2I-fG-ikN" id="sqo-se-FK2"/>

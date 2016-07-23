@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import MapKit
 
-class DetailOfBookVC: UIViewController, MKMapViewDelegate{
+class DetailOfBookVC: UIViewController, MKMapViewDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var storeAddreLabel: UIButton!
@@ -19,22 +19,28 @@ class DetailOfBookVC: UIViewController, MKMapViewDelegate{
     @IBOutlet weak var bookSummaryLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var bookImage: UIImageView?
-    
+    @IBOutlet weak var imageScrollView: UIScrollView!
     var index: Int?
+    var imageView: UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.imageScrollView.delegate = self
         self.mapView.hidden = true
+        self.imageScrollView.hidden = true
         
         bookNameLabel.text = BookLists.shareInstance.currentLists[index!].bookName
         storeTelLabel.setTitle("\(BookLists.shareInstance.currentLists[index!].storeTel!)", forState: .Normal)
         storeWebLabel.setTitle("Go Web", forState: .Normal)
         storeAddreLabel.setTitle("\(BookLists.shareInstance.currentLists[index!].storeAddre!)", forState: .Normal)
         bookSummaryLabel.text = BookLists.shareInstance.currentLists[index!].bookSummary       
-        bookImage?.image = BookLists.shareInstance.currentLists[index!].bookImage
-        
-
+        bookImage?.image =  BookLists.shareInstance.currentLists[index!].bookImage
+        imageView = UIImageView(image: BookLists.shareInstance.currentLists[index!].bookImage)
+        self.imageScrollView.addSubview(imageView!)
+        self.imageScrollView.contentSize = bookImage!.frame.size
+        self.imageScrollView.delegate = self
+        self.imageScrollView.maximumZoomScale = 1.0
+        self.imageScrollView.minimumZoomScale = 0.1
         // Do any additional setup after loading the view.
     }
 
@@ -49,6 +55,16 @@ class DetailOfBookVC: UIViewController, MKMapViewDelegate{
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
+
+    @IBAction func checkDetailImage(sender: AnyObject) {
+        self.mapView.hidden = true
+        self.imageScrollView.hidden = false
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.imageView
+    }
+    
     @IBAction func callStore(sender: AnyObject) {
         if let url = NSURL(string: "tel://\(BookLists.shareInstance.currentLists[index!].storeTel!)") {
             UIApplication.sharedApplication().openURL(url)
@@ -60,6 +76,7 @@ class DetailOfBookVC: UIViewController, MKMapViewDelegate{
         if BookLists.shareInstance.currentLists[index!].storeAddre != nil {
             
             self.mapView.hidden = false
+            self.imageScrollView.hidden = true
             
             let geoCoder = CLGeocoder()
             geoCoder.geocodeAddressString(BookLists.shareInstance.currentLists[index!].storeAddre!, completionHandler: { (placemarks, error) in

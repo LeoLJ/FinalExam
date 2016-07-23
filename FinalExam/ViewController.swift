@@ -104,7 +104,10 @@ extension ViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("BookDetailCell", forIndexPath: indexPath)
         cell.textLabel?.text = BookLists.shareInstance.currentLists[indexPath.row].bookName
-        cell.imageView?.image = BookLists.shareInstance.currentLists[indexPath.row].bookImage        
+        cell.imageView?.image = BookLists.shareInstance.currentLists[indexPath.row].bookImage
+
+        cell.imageView?.layer.cornerRadius = 10
+        cell.imageView?.layer.masksToBounds = true
         return cell
     }
     
